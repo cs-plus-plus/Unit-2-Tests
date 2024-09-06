@@ -45,4 +45,4 @@ Your grade will be based on the correctness of your implementations as verified 
 Remember to adhere to the Honor Agreement. Do not copy code from others, and ensure all work is your own.
 
 ## Contact
-If you have any questions or need assistance, feel free to contact me via email at [kevin.hare@sduhsd.net](mailto:kevin@csplusplus.com) or during office hours.
+If you have any questions or need assistance, feel free to contact me via email at [kevin@csplusplus.com](mailto:kevin@csplusplus.com) or during office hours.
