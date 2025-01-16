@@ -1,4 +1,4 @@
-# String and Math Methods Project
+# Unit 2 - String and Math Methods
 
 ## Overview
 This project is designed to help you practice and understand the usage of `String` and `Math` methods in Java. You will complete various methods that demonstrate your understanding of these concepts and then verify your implementations by running unit tests.
