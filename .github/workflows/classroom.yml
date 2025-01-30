@@ -1,0 +1,121 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: testConcatenateStrings
+      id: testconcatenatestrings
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testConcatenateStrings
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testConcatenateStrings test
+        timeout: 10
+        max-score: 10
+    - name: testCalculateSquareRoot
+      id: testcalculatesquareroot
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testCalculateSquareRoot
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testCalculateSquareRoot test
+        timeout: 10
+        max-score: 10
+    - name: testToUpperCase
+      id: testtouppercase
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testToUpperCase
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testToUpperCase test
+        timeout: 10
+        max-score: 10
+    - name: testFindMax
+      id: testfindmax
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testFindMax
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testFindMax test
+        timeout: 10
+        max-score: 10
+    - name: testGetStringLength
+      id: testgetstringlength
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testGetStringLength
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testGetStringLength test
+        timeout: 10
+        max-score: 10
+    - name: testRoundValue
+      id: testroundvalue
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testRoundValue
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testRoundValue test
+        timeout: 10
+        max-score: 10
+    - name: testGetSubstring
+      id: testgetsubstring
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testGetSubstring
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testGetSubstring test
+        timeout: 10
+        max-score: 10
+    - name: testGetAbsoluteValue
+      id: testgetabsolutevalue
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testGetAbsoluteValue
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testGetAbsoluteValue test
+        timeout: 10
+        max-score: 10
+    - name: testReplaceCharacter
+      id: testreplacecharacter
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testReplaceCharacter
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testReplaceCharacter test
+        timeout: 10
+        max-score: 10
+    - name: testPowerOf
+      id: testpowerof
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: testPowerOf
+        setup-command: mvn compile
+        command: mvn -Dtest=Unit2Test#testPowerOf test
+        timeout: 10
+        max-score: 10
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        TESTCONCATENATESTRINGS_RESULTS: "${{steps.testconcatenatestrings.outputs.result}}"
+        TESTCALCULATESQUAREROOT_RESULTS: "${{steps.testcalculatesquareroot.outputs.result}}"
+        TESTTOUPPERCASE_RESULTS: "${{steps.testtouppercase.outputs.result}}"
+        TESTFINDMAX_RESULTS: "${{steps.testfindmax.outputs.result}}"
+        TESTGETSTRINGLENGTH_RESULTS: "${{steps.testgetstringlength.outputs.result}}"
+        TESTROUNDVALUE_RESULTS: "${{steps.testroundvalue.outputs.result}}"
+        TESTGETSUBSTRING_RESULTS: "${{steps.testgetsubstring.outputs.result}}"
+        TESTGETABSOLUTEVALUE_RESULTS: "${{steps.testgetabsolutevalue.outputs.result}}"
+        TESTREPLACECHARACTER_RESULTS: "${{steps.testreplacecharacter.outputs.result}}"
+        TESTPOWEROF_RESULTS: "${{steps.testpowerof.outputs.result}}"
+        TEST-ALL_RESULTS: "${{steps.test-all.outputs.result}}"
+      with:
+        runners: testconcatenatestrings,testcalculatesquareroot,testtouppercase,testfindmax,testgetstringlength,testroundvalue,testgetsubstring,testgetabsolutevalue,testreplacecharacter,testpowerof
